@@ -13,16 +13,16 @@ const showVideo = (data) => {
     const input = document.createElement("div");
     input.classList = "card card-compact";
     input.innerHTML = `
-    <figure>
-    <img src=${video.thumbnail} />
-  </figure>
-  <div class="card-body">
+    <figure class="h-[200px]">
+    <img src=${video.thumbnail} class="w-full h-full object-cover"/>
+    </figure>
+    <div class="card-body">
     <h2 class="card-title">Shoes!</h2>
     <p>If a dog chews shoes whose shoes does he choose?</p>
     <div class="card-actions justify-end">
       <button class="btn btn-primary">Buy Now</button>
     </div>
-  </div>
+     </div>
 
     `;
       
