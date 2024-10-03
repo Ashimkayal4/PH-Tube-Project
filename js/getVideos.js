@@ -7,7 +7,22 @@ const getVideo = () => {
 const showVideo = (data) => {
   console.log(data);
   const videoDiv = document.getElementById("show-video-div");
-  videoDiv.innerHTML=''
+  videoDiv.innerHTML = ''
+  
+  if (data.length === 0) {
+    videoDiv.classList.remove('grid')
+    videoDiv.innerHTML = `
+    
+    <div class="flex flex-col gap-5 mt-5 justify-center items-center">
+      <img src="./Assets/Icon.png" />
+      <h2 class="font-bold text-2xl">Oops!Sorry , There is no content here </h2>
+    </div>
+     
+    `
+    return;
+  } else {
+     videoDiv.classList.add("grid");
+  }
 
   for (const video of data) {
     console.log(video)
