@@ -7,6 +7,7 @@ const getVideo = () => {
 const showVideo = (data) => {
   console.log(data);
   const videoDiv = document.getElementById("show-video-div");
+  videoDiv.innerHTML=''
 
   for (const video of data) {
     console.log(video)
@@ -16,12 +17,14 @@ const showVideo = (data) => {
     <figure class="h-[200px] relative">
      <img src=${video.thumbnail} class="w-full h-full object-cover"/>
      ${
-        video.others.posted_date.length === 0 ? "": `
-        <span class="absolute bg-black text-white right-2 bottom-2 p-1 rounded">${video.others.posted_date}</span> 
-        
-        `
+       video.others.posted_date.length === 0
+         ? ""
+         : `
+        <span class="absolute bg-black text-white right-2 bottom-2 p-1 rounded">${getTime(
+          video.others.posted_date
+        )}</span> 
+       `
      }
-   
     </figure>
     <div class="px-0 py-2 flex gap-2">
       <div><img class="h-10 w-10 rounded-full object-cover" src=${
@@ -47,5 +50,19 @@ const showVideo = (data) => {
     videoDiv.append(input);
   }
 };
+
+
+/* get time function */
+const getTime = (input) => {
+  const hours = parseInt(input / 3600);
+  const leftTime = input % 3600;
+  const minute = parseInt(leftTime / 60);
+  const seconds = leftTime % 60;
+
+  return `${hours}h ${minute}m ${seconds}s`;
+  
+}
+  
+
 
 getVideo();
